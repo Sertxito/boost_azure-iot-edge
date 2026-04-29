@@ -3,7 +3,7 @@
 #include <PubSubClient.h>
 #include <DHT.h>
 
-#include "../secrets.local.h"
+#include "secrets.local.h"
 
 // ================== PINES ==================
 #define PIN_PIR     D5
