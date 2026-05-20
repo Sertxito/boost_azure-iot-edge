@@ -10,3 +10,4 @@ __pycache__/
 arduinos/secrets.local.h
 arduinos/**/secrets.local.h
 deployment/modules-content-*.json
+docs/blob-config.js
