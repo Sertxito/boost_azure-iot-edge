@@ -9,4 +9,5 @@ __pycache__/
 .DS_Store
 arduinos/secrets.local.h
 arduinos/**/secrets.local.h
+docs/blob-config.js
 deployment/modules-content-*.json
