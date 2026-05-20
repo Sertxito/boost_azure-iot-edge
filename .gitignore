@@ -8,4 +8,5 @@ __pycache__/
 .idea/
 .DS_Store
 arduinos/secrets.local.h
+arduinos/**/secrets.local.h
 deployment/modules-content-*.json
