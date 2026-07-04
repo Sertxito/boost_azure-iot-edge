@@ -1,0 +1,29 @@
+# CODEOWNERS — Sertxito Repositories
+# Defines code ownership and review requirements
+#
+# Format: <path or pattern> <@username or team>
+# More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# All code requires Sertxito review
+* @Sertxito
+
+# GitHub-specific configuration always needs review
+.github/ @Sertxito
+.github/workflows/ @Sertxito
+
+# Infrastructure and configuration
+*.yml @Sertxito
+*.yaml @Sertxito
+*.json @Sertxito
+*.bicep @Sertxito
+Dockerfile @Sertxito
+
+# Documentation
+*.md @Sertxito
+docs/ @Sertxito
+README.md @Sertxito
+
+# Tests always require review
+**/test* @Sertxito
+**/spec* @Sertxito
+**/__tests__/ @Sertxito

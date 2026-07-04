@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check structure
+        run: |
+          # Verify critical files exist
+          files=("README.md" "LICENSE" ".github/CODEOWNERS")
+          for file in "${files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing: $file"
+              exit 1
+            fi
+            echo "✅ Present: $file"
+          done
+      
+      - name: Validate README
+        run: |
+          # Check README has required sections
+          if ! grep -q "## Overview" README.md; then
+            echo "❌ README missing '## Overview' section"
+            exit 1
+          fi
+          if ! grep -q "## Quick Start" README.md; then
+            echo "❌ README missing '## Quick Start' section"
+            exit 1
+          fi
+          echo "✅ README structure valid"
+      
+      - name: Check License
+        run: |
+          if ! grep -q "MIT License" LICENSE; then
+            echo "⚠️ License doesn't mention MIT"
+          fi
+          echo "✅ License file present"
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Markdown lint
+        uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          files: .
+          config_file: .markdownlint.json
+        continue-on-error: true
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'MEDIUM,HIGH,CRITICAL'
+        continue-on-error: true
