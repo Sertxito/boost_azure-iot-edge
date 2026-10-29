@@ -29,6 +29,20 @@ Proyecto Edge maduro para arquitecturas IoT. Ingesta MQTT → normalización de 
 
 ### Installation
 
+#### Copilot boost (agent + skills) — standalone, no MCP required
+
+Install the IoT agent, skills and instructions into any project; GitHub Copilot / VS Code detects them automatically:
+
+```bash
+npx github:Sertxito/boost_azure-iot-edge --target .   # or: npx boost-iot-edge once published
+npx github:Sertxito/boost_azure-iot-edge --check      # verify
+npx github:Sertxito/boost_azure-iot-edge --uninstall  # remove
+```
+
+Assets are installed prefixed with `iot-` (`.github/agents/iot-*.agent.md`, `.github/skills/iot-*/`, `.agents/skills/iot-*/`, `.github/instructions/iot-*.instructions.md`). Nothing already existing is overwritten: every ignored file is reported with a `[WARN] ... IGNORED` message (use `--force` to overwrite). Reload VS Code afterwards.
+
+#### Edge runtime
+
 ```bash
 git clone https://github.com/Sertxito/boost_azure-iot-edge.git
 cd boost_azure-iot-edge

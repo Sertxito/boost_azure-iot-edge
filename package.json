@@ -1,0 +1,28 @@
+{
+  "name": "boost-iot-edge",
+  "version": "0.1.0",
+  "description": "IoT Edge Boost: Azure smart-city IoT agent and skills, self-installable into any project for GitHub Copilot / VS Code.",
+  "type": "module",
+  "boostPrefix": "iot",
+  "files": [
+    ".github/agents",
+    ".github/skills",
+    ".github/instructions",
+    "scripts/install.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "boost:install": "node scripts/install.mjs",
+    "boost:check": "node scripts/install.mjs --check"
+  },
+  "keywords": ["boost", "iot", "azure", "iot-edge", "agents", "skills", "copilot", "github-copilot", "agent-skills"],
+  "author": "Sergio Hierro Cinos",
+  "repository": { "type": "git", "url": "git+https://github.com/Sertxito/boost_azure-iot-edge.git" },
+  "bugs": { "url": "https://github.com/Sertxito/boost_azure-iot-edge/issues" },
+  "homepage": "https://github.com/Sertxito/boost_azure-iot-edge#readme",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "publishConfig": { "access": "public" },
+  "bin": { "boost-iot-edge": "scripts/install.mjs" }
+}
